@@ -1,11 +1,7 @@
-# Multi microservice example 
+# Banking App Example
+## Bank
 
-
-## Applications
-
-### Bank
-
-#### Techs
+### Techs
 
 - Backend is written with Dotnet
 - Frontend is written in Angular.
