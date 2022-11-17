@@ -1,0 +1,10 @@
+Applications/ForInternals/BankingMicroServices/UserClients.BusinessLogic/bin/Debug/net6.0/UserClients.DataAccess.dll
+Applications/ForInternals/BankingMicroServices/UserClients/bin/Debug/net6.0/Microsoft.Extensions.Caching.Memory.dll
+
+
+# Add to git ignore any directory called bin or obj
+bin/
+obj/
+
+# Add to git ignore any directory from npm
+node_modules/
