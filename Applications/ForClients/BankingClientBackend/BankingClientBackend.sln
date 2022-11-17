@@ -1,0 +1,46 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BankingClientBackend", "BankingClientBackend\BankingClientBackend.csproj", "{546961B5-2996-4F0B-A75F-675572BA1E7D}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BankingClientBackend.Nunit.Tests", "BankingClientBackend.Nunit.Tests\BankingClientBackend.Nunit.Tests.csproj", "{04C578AB-3B31-41F1-B813-23C9474CA9A4}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BankingClientBackend.DataAccess", "BankingClientBackend.DataAccess\BankingClientBackend.DataAccess.csproj", "{AB0D25FC-7633-4401-9CB9-C311FAFB4084}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BankingClientBackend.Logic", "BankingClientBackend.Logic\BankingClientBackend.Logic.csproj", "{0B174B9D-343E-4098-8D95-B0BF3BE69911}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BankingClientBackend.DataAccess.Database", "BankingClientBackend.DataAccess.Database\BankingClientBackend.DataAccess.Database.csproj", "{564C058D-1404-49CF-8A54-7DD4E4802289}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BankingClientBackend.DataAccess.WebserviceProxy", "BankingClientBackend.DataAccess.WebserviceProxy\BankingClientBackend.DataAccess.WebserviceProxy.csproj", "{BBE8738E-30AA-44D0-B84B-85FDB8146126}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{546961B5-2996-4F0B-A75F-675572BA1E7D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{546961B5-2996-4F0B-A75F-675572BA1E7D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{546961B5-2996-4F0B-A75F-675572BA1E7D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{546961B5-2996-4F0B-A75F-675572BA1E7D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{04C578AB-3B31-41F1-B813-23C9474CA9A4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{04C578AB-3B31-41F1-B813-23C9474CA9A4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{04C578AB-3B31-41F1-B813-23C9474CA9A4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{04C578AB-3B31-41F1-B813-23C9474CA9A4}.Release|Any CPU.Build.0 = Release|Any CPU
+		{AB0D25FC-7633-4401-9CB9-C311FAFB4084}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AB0D25FC-7633-4401-9CB9-C311FAFB4084}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AB0D25FC-7633-4401-9CB9-C311FAFB4084}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AB0D25FC-7633-4401-9CB9-C311FAFB4084}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0B174B9D-343E-4098-8D95-B0BF3BE69911}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0B174B9D-343E-4098-8D95-B0BF3BE69911}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0B174B9D-343E-4098-8D95-B0BF3BE69911}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0B174B9D-343E-4098-8D95-B0BF3BE69911}.Release|Any CPU.Build.0 = Release|Any CPU
+		{564C058D-1404-49CF-8A54-7DD4E4802289}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{564C058D-1404-49CF-8A54-7DD4E4802289}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{564C058D-1404-49CF-8A54-7DD4E4802289}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{564C058D-1404-49CF-8A54-7DD4E4802289}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BBE8738E-30AA-44D0-B84B-85FDB8146126}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BBE8738E-30AA-44D0-B84B-85FDB8146126}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BBE8738E-30AA-44D0-B84B-85FDB8146126}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BBE8738E-30AA-44D0-B84B-85FDB8146126}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+EndGlobal

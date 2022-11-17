@@ -1,0 +1,4 @@
+root         1     0  0 09:56 pts/0    00:00:00 /usr/bin/qemu-x86_64 /bin/bash /bin/bash /var/db2_setup/lib/setup_db2_instance.sh
+root      3138     1  2 09:56 pts/0    00:00:00 /usr/bin/qemu-x86_64 /opt/ibm/db2/V11.5/bin/db2support /opt/ibm/db2/V11.5/bin/db2support /database/config/db2icrt -install
+root      3578  3138  0 09:57 pts/0    00:00:00 /usr/bin/qemu-x86_64 /bin/sh sh -c /bin/ps -ef |grep db2 > "/database/config/db2icrt/DB2SUPPORT/2691efac1364_IIH/ps.out" 2>&1
+root      3583  3578  0 09:57 pts/0    00:00:00 /usr/bin/qemu-x86_64 /usr/bin/grep grep db2

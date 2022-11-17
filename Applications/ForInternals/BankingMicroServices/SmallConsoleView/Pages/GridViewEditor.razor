@@ -1,0 +1,90 @@
+@page "/GridViewEditor"
+@using BankingDataAccess.Core.Configuration
+@using Microsoft.AspNetCore.Components.Web
+@using System.Net.Http
+@using Microsoft.AspNetCore.Authorization
+@using Microsoft.AspNetCore.Components.Authorization
+@using Microsoft.AspNetCore.Components.Forms
+@using Microsoft.AspNetCore.Components.Routing
+@using Microsoft.AspNetCore.Components.Web
+@using Microsoft.JSInterop
+@inject IUnitOfWorkV2 UnitOfWorkV2
+<h3>GridViewEditor</h3>
+
+@code {
+    
+    
+    public List<string> Tables { get; set; }
+    public List<string> Columnes { get; set; }
+    public bool IsTableSelected { get; set; } = false;
+    
+    protected override void OnInitialized()
+    {
+        GetAllEntities();
+    }
+    
+    public void GetAllEntities()
+    {
+    // Get all properties from object
+        var properties = UnitOfWorkV2.GetType().GetProperties();
+        
+    // Make a list of the name of each property
+        Tables = new List<string>();
+        Tables.Add("");
+        Tables.AddRange(properties.Select(p => p.Name).ToList());
+        
+        
+    }
+
+    public void OnTableSelected(ChangeEventArgs arg)
+    {
+        Console.WriteLine("My debug output.");
+        /*IsTableSelected = true;
+        var nameOfTable = arg.Value.ToString();
+
+        var value = UnitOfWorkV2?.GetType()?.GetProperty(nameOfTable)?.GetValue(UnitOfWorkV2);
+        
+        var properties = UnitOfWorkV2.GetType().GetProperties();
+        
+        Columnes = properties.Select(p => p.Name).ToList();*/
+
+    }
+
+    private void OnTableSelectedV2(MouseEventArgs obj)
+    {
+        Console.WriteLine("My debug output.");
+    }
+
+}
+
+
+<label for="cars">Choose a table:</label>
+
+<select class="form-control" name="cars" id="cars" @onchanged="@OnTableSelected">
+    <!-- BLAZOR: if Model.Columnes is not null -->
+    @if (Tables != null)
+    {
+        @foreach (var item in Tables)
+        {
+            <option value="@item">@item</option>
+        }
+    }
+</select>
+
+
+<!-- Create a dynamic gridview -->
+<table>
+    <tr>
+        
+        <!-- BLAZOR: if Model.Columnes is not null -->
+        @if (IsTableSelected)
+        {
+            @foreach (var column in Columnes)
+            {
+                <th>@column</th>
+            }
+        }
+
+    </tr>
+
+</table>

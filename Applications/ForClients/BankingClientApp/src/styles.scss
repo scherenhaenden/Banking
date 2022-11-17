@@ -1,0 +1,27 @@
+/* You can add global styles to this file, and also import other style files */
+
+/* Importing Bootstrap SCSS file. */
+@import '~bootstrap/scss/bootstrap';
+
+.ocupy-the-whole-screen {
+  min-height: 100% !important;
+  min-width: 100% !important;
+  width: 100% !important;
+  height: 100% !important;
+}
+
+
+html, body, app-root, router-outlet {
+  @extend.ocupy-the-whole-screen;
+}
+app-root {
+  display: block;
+  height: 100%;
+}
+
+#body-definition {
+  min-height: 100% !important;
+  min-width: 100% !important;
+  width: 100% !important;
+  height: 100% !important;
+}

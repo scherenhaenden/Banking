@@ -1,0 +1,2 @@
+FROM ibmcom/db2
+EXPORT DOCKER_DEFAULT_PLATFORM=linux/amd64 

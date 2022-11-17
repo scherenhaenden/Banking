@@ -1,0 +1,110 @@
+
+==========================================================================
+
+Tue Nov  8 09:57:06 2022
+Checking prerequisites for DB2 installation. Version "11.5.8.0". Operating system "Linux" 
+   
+Validating "kernel level " ... 
+   Required minimum operating system kernel level: "3.10.0". 
+   Actual operating system kernel level: "5.15.68". 
+   Requirement matched. 
+   
+Validating "Linux distribution " ... 
+   Required minimum operating system distribution: "RHEL"; Version: "8"; Service pack: "1". 
+   Actual operating system distribution Version: "8"; Service pack: "6". 
+   Requirement matched. 
+   
+Validating "ksh symbolic link" ... 
+   Requirement matched. 
+   
+Validating "C++ Library version " ... 
+   Required minimum C++ library: "libstdc++.so.6" 
+   Standard C++ library is located in the following directory: "/usr/lib64/libstdc++.so.6.0.25". 
+   Actual C++ library: "CXXABI_1.3.1" 
+   Requirement matched. 
+   
+
+Validating "32 bit version of "libstdc++.so.6" " ... 
+   Found the 32 bit "/lib/libstdc++.so.6" in the following directory "/lib". 
+   Requirement matched. 
+   
+Validating "libaio.so version " ... 
+DBT3553I  The db2prereqcheck utility successfully loaded the libaio.so.1 file. 
+   Requirement matched. 
+   
+Validating "libnuma.so version " ... 
+DBT3610I  The db2prereqcheck utility successfully loaded the libnuma.so.1 file. 
+   Requirement matched. 
+   
+Validating "/lib/libpam.so*" ... 
+   DBT3514W  The db2prereqcheck utility failed to find the following 32-bit library file: "/lib/libpam.so*". 
+   WARNING : Requirement not matched. 
+Requirement not matched for DB2 database "Server" . Version: "11.5.8.0". 
+Summary of prerequisites that are not met on the current system: 
+   DBT3514W  The db2prereqcheck utility failed to find the following 32-bit library file: "/lib/libpam.so*". 
+
+
+
+==========================================================================
+
+Tue Nov  8 09:57:06 2022
+Checking prerequisites for DB2 installation with the DB2 pureScale Feature.  Version: "11.5.8.0".  Operating system: "Linux". 
+   
+Validating "kernel level " ... 
+   Required minimum operating system kernel level: "3.10.0". 
+   Actual operating system kernel level: "5.15.68". 
+   Requirement matched. 
+   
+Validating "Linux distribution " ... 
+   Required minimum operating system distribution: "RHEL"; Version: "8"; Service pack: "4". 
+   Actual operating system distribution Version: "8"; Service pack: "6". 
+   Requirement matched. 
+   
+Validating "ksh symbolic link" ... 
+   Requirement matched. 
+   
+Validating "libc.so version " ... 
+   glibc library is located in the following directory "/usr/lib64/libc-2.28.so". 
+   Required minimum glibc library version: "2.4.0" 
+   Actual glibc library version: "2.28.0" 
+   Requirement matched. 
+   
+Validating "gcc" ... 
+   Package (or file) found: "gcc" 
+   Requirement matched. 
+   
+Validating "binutils" ... 
+   Package (or file) found: "binutils" 
+   Requirement matched. 
+   
+Validating "cpp" ... 
+   Package (or file) found: "cpp" 
+   Requirement matched. 
+   
+Validating "gcc-c++" ... 
+   Package (or file) found: "gcc-c++" 
+   Requirement matched. 
+   
+Validating "net-tools" ... 
+   Package (or file) found: "net-tools" 
+   Requirement matched. 
+   
+Validating "m4" ... 
+DBT3507E  The db2prereqcheck utility failed to find the following package or file: "m4". 
+   ERROR : Requirement not matched. 
+   
+Validating "NetworkManager-config-server" ... 
+DBT3507E  The db2prereqcheck utility failed to find the following package or file: "NetworkManager-config-server". 
+   ERROR : Requirement not matched. 
+   
+Validating "kernel-devel" ... 
+DBT3507E  The db2prereqcheck utility failed to find the following package or file: "kernel-devel". 
+   ERROR : Requirement not matched. 
+   
+Validating "kernel-headers" ... 
+   Package (or file) found: "kernel-headers" 
+DBT3617E  The db2prereqcheck utility detected that a "kernel-headers" package with a version that matches the system "kernel" level "5.15.68-0-virt" is not installed. 
+   ERROR : Requirement not matched. 
+   
+Validating "file" ... 
+   Package (or file) found: 

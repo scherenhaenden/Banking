@@ -1,0 +1,38 @@
+<Project Sdk="Microsoft.NET.Sdk.Web">
+
+    <PropertyGroup>
+        <TargetFramework>net6.0</TargetFramework>
+        <Nullable>enable</Nullable>
+        <ImplicitUsings>enable</ImplicitUsings>
+        <UserSecretsId>aspnet-SmallConsoleView-73D8240C-9D48-4672-A2CB-2C446107E11D</UserSecretsId>
+        <DockerDefaultTargetOS>Linux</DockerDefaultTargetOS>
+    </PropertyGroup>
+
+    <ItemGroup>
+        <None Update="app.db" CopyToOutputDirectory="PreserveNewest" ExcludeFromSingleFile="true" />
+    </ItemGroup>
+
+    <ItemGroup>
+        <PackageReference Include="Microsoft.AspNetCore.Components.Forms" Version="6.0.6" />
+        <PackageReference Include="Microsoft.AspNetCore.Diagnostics.EntityFrameworkCore" Version="6.0.6" />
+        <PackageReference Include="Microsoft.AspNetCore.Identity.EntityFrameworkCore" Version="6.0.6" />
+        <PackageReference Include="Microsoft.AspNetCore.Identity.UI" Version="6.0.6" />
+        <PackageReference Include="Microsoft.EntityFrameworkCore.InMemory" Version="6.0.6" />
+        <PackageReference Include="Microsoft.EntityFrameworkCore.Proxies" Version="6.0.6" />
+        <PackageReference Include="Microsoft.EntityFrameworkCore.Sqlite" Version="6.0.6" />
+        <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="6.0.6" />
+        <PackageReference Include="Microsoft.Extensions.ObjectPool" Version="6.0.6" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <ProjectReference Include="..\BankingDataAccess\BankingDataAccess.csproj" />
+      <ProjectReference Include="..\UserClients.BusinessLogic\UserClients.BusinessLogic.csproj" />
+      <ProjectReference Include="..\UserClients.DataAccess.Database\UserClients.DataAccess.Database.csproj" />
+      <ProjectReference Include="..\UserClients.DataAccess\UserClients.DataAccess.csproj" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <Folder Include="Pages\Components" />
+    </ItemGroup>
+
+</Project>

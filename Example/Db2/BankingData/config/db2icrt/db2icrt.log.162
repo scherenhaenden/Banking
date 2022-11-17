@@ -1,0 +1,23 @@
+
+DB2 Setup log file started at:  Tue Nov 08 09:56:36 2022 UTC
+============================================================
+
+Operating system information: Linux 5.15.68-0-virt.#1-Alpine SMP Fri, 16 Sep 2022 06:29:31 +0000 x86_64 
+ERROR: The instance home directory "/database/config/db2inst1" is invalid because it
+is not owned by the user "db2inst1". Change the ownership of the home directory
+to be owned by the instance user and its primary group.
+
+ERROR: The "db2icrt" command failed. Ensure that errors reported in the log
+file are fixed, then rerun the command.
+
+
+Post-installation instructions 
+-------------------------------
+
+Required steps: 
+There were some errors detected during DB2 installation. To collect the information files from the system, run the "db2support -install" command with the proper options before reporting the problem to IBM service. For information regarding the usage of the db2support tool, check the DB2 Information Center. 
+
+
+DB2 Setup log file finished at:  Tue Nov 08 09:56:57 2022 UTC
+============================================================
+

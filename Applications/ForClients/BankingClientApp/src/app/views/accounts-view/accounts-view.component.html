@@ -1,0 +1,27 @@
+<ng-container id="page-top">
+  <div id="wrapper">
+    <app-main-side-bar></app-main-side-bar>
+
+      <div id="content-wrapper" class="d-flex flex-column">
+          <div id="content">
+            <app-main-up-bar
+            (logoutEvent)="logout()"
+            ></app-main-up-bar>
+              <div class="container-fluid">
+                  <div class="d-sm-flex justify-content-between align-items-center mb-4">
+                      <h3 class="text-dark mb-0">Accounts</h3><a class="btn btn-primary btn-sm d-none d-sm-inline-block" role="button" href="#"><i class="fas fa-download fa-sm text-white-50"></i> Generate Report</a>
+                  </div>
+                  <div class="row">
+                    <app-banking-account-cards class="col-md-6 col-xl-3 mb-4"     *ngFor="let bankingAccount of accounts"
+                    [bankingAccountCompactModel]="bankingAccount"></app-banking-account-cards>
+                  </div>
+              </div>
+          </div>
+          <footer class="bg-white sticky-footer">
+              <div class="container my-auto">
+                  <div class="text-center my-auto copyright"><span>Copyright © Banking 2022</span></div>
+              </div>
+          </footer>
+      </div><a class="border rounded d-inline scroll-to-top" href="#page-top"><i class="fas fa-angle-up"></i></a>
+  </div>
+</ng-container>
