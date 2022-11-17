@@ -13,7 +13,7 @@ public interface IRepository<TEntity> where TEntity : Entity, IEntity
     Task UpdateAsync(TEntity entity);
     Task DeleteAsync(TEntity entity);*/
 
-    IQueryable GetAll();
+    IQueryable<TEntity> GetAll();
     TEntity Get(Guid id);
     IQueryable<TEntity> Where(Expression<Func<TEntity, bool>> predicate);
     TEntity? SingleOrDefault(Expression<Func<TEntity, bool>> predicate);

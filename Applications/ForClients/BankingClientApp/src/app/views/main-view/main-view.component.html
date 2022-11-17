@@ -1,0 +1,20 @@
+<ng-container id="page-top">
+  <div id="wrapper">
+    <app-main-side-bar></app-main-side-bar>
+
+      <div id="content-wrapper" class="d-flex flex-column">
+          <div id="content">
+            <app-main-up-bar
+            (logoutEvent)="logout()"
+            ></app-main-up-bar>
+            <router-outlet></router-outlet>
+
+          </div>
+          <footer class="bg-white sticky-footer">
+              <div class="container my-auto">
+                  <div class="text-center my-auto copyright"><span>Copyright © Banking 2022</span></div>
+              </div>
+          </footer>
+      </div><a class="border rounded d-inline scroll-to-top" href="#page-top"><i class="fas fa-angle-up"></i></a>
+  </div>
+</ng-container>

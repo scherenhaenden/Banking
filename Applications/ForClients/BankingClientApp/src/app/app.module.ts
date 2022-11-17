@@ -14,6 +14,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { JwtInterceptorService } from './services/security/jwt-interceptor.service';
 import { ShareViewsModule } from './views/share-views/share-views.module';
+import { MainViewComponent } from './views/main-view/main-view.component';
 
 @NgModule({
   declarations: [
@@ -22,7 +23,8 @@ import { ShareViewsModule } from './views/share-views/share-views.module';
     TemplateViewProfileComponent,
     TemplateViewLoginComponent,
     LoginViewComponent,
-    AccountsViewComponent
+    AccountsViewComponent,
+    MainViewComponent
   ],
   imports: [
     BrowserModule,

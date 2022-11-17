@@ -1,3 +1,4 @@
+import { MainViewComponent } from './views/main-view/main-view.component';
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { AuthGuardService } from './services/security/auth-guard.service';
@@ -6,10 +7,19 @@ import { LoginViewComponent } from './views/login-view/login-view.component';
 
 const routes: Routes = [
   { path: '', redirectTo: 'login', pathMatch: 'full' },
-  { path: 'login', component: LoginViewComponent  },
-  { path: 'accounts', component: AccountsViewComponent, canActivate: [AuthGuardService] },
-  // add route that needs authentication
+  { path: 'login', component: LoginViewComponent
 
+  },
+  { path: '', component: MainViewComponent, canActivate: [AuthGuardService],
+    children: [
+      { path: 'accounts', component: AccountsViewComponent },
+      // add route for security
+      {path: 'security', loadChildren: () => import('./modules/security-management/security-management.module').then(m => m.SecurityManagementModule) },
+
+    ]
+
+
+  },
 ];
 
 @NgModule({

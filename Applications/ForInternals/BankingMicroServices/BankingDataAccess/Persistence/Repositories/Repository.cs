@@ -16,7 +16,7 @@ public class Repository<TEntity> : IRepository<TEntity> where TEntity : Entity, 
     }
 
 
-    public IQueryable GetAll()
+    public IQueryable<TEntity> GetAll()
     {
         return Entity.AsQueryable();
     }

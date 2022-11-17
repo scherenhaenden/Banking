@@ -25,7 +25,14 @@
                                 <div class="mb-3"><input class="form-control" type="text" formControlName="employeeid" placeholder="Employee Id" /></div>
                               </ng-container>
 
-                              <p>Client Password</p>
+                              <ng-container *ngIf="isCustomer">
+                                <p>Client Password</p>
+                              </ng-container>
+                              <ng-container *ngIf="!isCustomer">
+                                <p>Employee Password</p>
+                              </ng-container>
+
+
                               <div class="mb-3"><input class="form-control" type="password" formControlName="password" placeholder="Password" /></div>
                               <div class="mb-3"><button class="btn btn-primary d-block w-100" type="submit">Login</button></div>
                               <div class="text-left align-left-initial" style="">
