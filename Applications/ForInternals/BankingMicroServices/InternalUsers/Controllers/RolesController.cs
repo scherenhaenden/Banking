@@ -15,6 +15,51 @@ public class RolesController : Controller
         _unitOfWork = unitOfWork;
     }
     
+    // Create method that Allow Anonymous is httpPost  with Route AddRole that Accepts RoleDto as parameter
+    [AllowAnonymous]
+    [HttpPost]
+    [Route("AddRole")]
+    public async Task<IActionResult> AddRole(RoleDto roleDto)
+    {
+        // Create new Role
+        var role = new Role
+        {
+            Name = roleDto.Name,
+            Description = roleDto.Description
+        };
+        // Add Role to Database
+        await _unitOfWork.Roles.AddAsync(role);
+        // Save Changes
+        await _unitOfWork.SaveChangesAsync();
+        // Return Ok
+        return Ok();
+    }
+    
+    // Create method that Allow Anonymous is httpPut  with Route UpdateTole that Accepts RoleDto as parameter
+    [AllowAnonymous]
+    [HttpPut]
+    [Route("UpdateRole")]
+    public async Task<IActionResult> UpdateRole(RoleDto roleDto)
+    {
+        // Get Role from Database
+        var role = await _unitOfWork.Roles.GetByIdAsync(roleDto.Id);
+        // Check if Role is null
+        if (role == null)
+        {
+            // Return NotFound
+            return NotFound();
+        }
+        // Update Role
+        role.Name = roleDto.Name;
+        role.Description = roleDto.Description;
+        // Update Role in Database
+        _unitOfWork.Roles.Update(role);
+        // Save Changes
+        await _unitOfWork.SaveChangesAsync();
+        // Return Ok
+        return Ok();
+    }
+    
     
     // Create method that Allow Anonymous is httpGet with Route GetRolesByPagination that Accepts int page and int pageSize
     [AllowAnonymous]
