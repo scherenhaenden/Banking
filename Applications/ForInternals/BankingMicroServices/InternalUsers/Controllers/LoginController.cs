@@ -14,23 +14,7 @@ public class LoginController : Controller
     {
         _logicBusinessLogic = logicBusinessLogic;
     }
-    
 
-
-        // GET
-    [AllowAnonymous]
-    [HttpGet]
-    [Route("login")]
-    public IActionResult Login(string username, string password)
-    {
-        var user = _logicBusinessLogic.GetUserInformationByUserNameAndPassword(username, password);
-        if (user == null)
-        {
-            return Unauthorized();
-        }
-        return Ok(user);
-    }
-    
     // Create Method of http type get, allow anonymous route 'LoginEmployee' and accepts the parameters 'EmployeeId' and 'Password'
     [AllowAnonymous]
     [HttpGet]

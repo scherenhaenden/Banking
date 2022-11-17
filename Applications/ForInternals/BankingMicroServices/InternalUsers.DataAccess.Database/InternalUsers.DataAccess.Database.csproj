@@ -11,13 +11,13 @@
     </ItemGroup>
 
     <ItemGroup>
-      <Folder Include="Logic" />
-    </ItemGroup>
-
-    <ItemGroup>
       <PackageReference Include="AutoMapper" Version="12.0.0" />
       <PackageReference Include="Mapster" Version="7.3.0" />
       <PackageReference Include="Newtonsoft.Json" Version="13.0.1" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <Folder Include="Domain\InternalTokens" />
     </ItemGroup>
 
 </Project>

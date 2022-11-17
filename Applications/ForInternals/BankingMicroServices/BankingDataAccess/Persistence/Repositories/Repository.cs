@@ -34,7 +34,12 @@ public class Repository<TEntity> : IRepository<TEntity> where TEntity : Entity, 
         IQueryable<TEntity> query = Entity;
         return includeProperties.Aggregate(query, (current, includeProperty) => current.Include(includeProperty));
     }
-    
+
+    public Task<IEnumerable<TEntity>> EntityWithEagerLoad(Expression<Func<TEntity, bool>> filter, string[] children, CancellationToken cancellationToken = default)
+    {
+        throw new NotImplementedException();
+    }
+
     public async Task<IEnumerable<TEntity>> EntityWithEagerLoad(Expression<Func<TEntity, bool>> filter, string[] children)  
     {  
         try  
@@ -78,6 +83,16 @@ public class Repository<TEntity> : IRepository<TEntity> where TEntity : Entity, 
         return Entity.Single(x=>x.Id == id);
     }
 
+    public Task<TEntity?> GetByIdAsync(Guid id, CancellationToken cancellationToken = default)
+    {
+        return Entity.SingleOrDefaultAsync(x=>x.Id == id, cancellationToken);
+    }
+
+    public Task UpdateAsync(TEntity entity, CancellationToken cancellationToken = default)
+    {
+        return new Task(() => Entity.Update(entity), cancellationToken);
+    }
+
     public IQueryable<TEntity> Where(Expression<Func<TEntity, bool>> predicate)
     {
         return Entity.Where(predicate);
@@ -88,9 +103,16 @@ public class Repository<TEntity> : IRepository<TEntity> where TEntity : Entity, 
         return Entity.SingleOrDefault(predicate);
     }
 
-    public void Add(TEntity entity)
+    public TEntity Add(TEntity entity)
     {
-        Entity.Add(entity);
+        var result = Entity.Add(entity);
+        return result.Entity;
+    }
+
+    public Task<TEntity> AddAsync(TEntity entity, CancellationToken cancellationToken = default)
+    {
+        var result = new Task<TEntity>(() => Entity.Add(entity).Entity, cancellationToken);
+        return result;
     }
 
     public void AddRange(IEnumerable<TEntity> entities)
@@ -103,6 +125,11 @@ public class Repository<TEntity> : IRepository<TEntity> where TEntity : Entity, 
         Entity.Remove(entity);
     }
 
+    public Task RemoveAsync(TEntity entity, CancellationToken cancellationToken = default)
+    {
+        return new Task(() => Entity.Remove(entity), cancellationToken);
+    }
+    
     public void RemoveRange(IEnumerable<TEntity> entities)
     {
         Entity.RemoveRange(entities);

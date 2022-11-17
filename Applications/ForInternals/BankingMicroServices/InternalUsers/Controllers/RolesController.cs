@@ -1,4 +1,5 @@
 using BankingDataAccess.Core.Configuration;
+using InternalUsers.BusinessLogic.Core;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
@@ -8,10 +9,13 @@ namespace InternalUsers.Controllers;
 [Route("[controller]")]
 public class RolesController : Controller
 {
+    private readonly IRolesBusinessLogic _rolesBusinessLogic;
     private readonly IUnitOfWorkV2 _unitOfWork;
 
-    public RolesController(IUnitOfWorkV2 unitOfWork)
+    public RolesController(IRolesBusinessLogic rolesBusinessLogic,
+        IUnitOfWorkV2 unitOfWork)
     {
+        _rolesBusinessLogic = rolesBusinessLogic;
         _unitOfWork = unitOfWork;
     }
     
@@ -19,10 +23,10 @@ public class RolesController : Controller
     [AllowAnonymous]
     [HttpPost]
     [Route("AddRole")]
-    public async Task<IActionResult> AddRole(RoleDto roleDto)
+    public async Task<IActionResult> AddRole(object roleDto)
     {
         // Create new Role
-        var role = new Role
+        /*var role = new Role
         {
             Name = roleDto.Name,
             Description = roleDto.Description
@@ -30,7 +34,7 @@ public class RolesController : Controller
         // Add Role to Database
         await _unitOfWork.Roles.AddAsync(role);
         // Save Changes
-        await _unitOfWork.SaveChangesAsync();
+        await _unitOfWork.SaveChangesAsync();*/
         // Return Ok
         return Ok();
     }
@@ -39,10 +43,10 @@ public class RolesController : Controller
     [AllowAnonymous]
     [HttpPut]
     [Route("UpdateRole")]
-    public async Task<IActionResult> UpdateRole(RoleDto roleDto)
+    public async Task<IActionResult> UpdateRole(object roleDto)
     {
         // Get Role from Database
-        var role = await _unitOfWork.Roles.GetByIdAsync(roleDto.Id);
+        /*var role = await _unitOfWork.Roles.GetByIdAsync(roleDto.Id);
         // Check if Role is null
         if (role == null)
         {
@@ -56,7 +60,7 @@ public class RolesController : Controller
         _unitOfWork.Roles.Update(role);
         // Save Changes
         await _unitOfWork.SaveChangesAsync();
-        // Return Ok
+        // Return Ok*/
         return Ok();
     }
     
@@ -77,18 +81,14 @@ public class RolesController : Controller
         
         // Create a variable of type PagedList<Role> and assign it to the result of the GetRolesByPagination method of the RoleRepository class
         //var roles = await _unitOfWork.Roles.GetRolesByPagination(page, pageSize);
-
-
-
-        var roles = _unitOfWork
-                .Roles
-                .GetAll()
-            ;//.Include(x => x.RolePermissions).ThenInclude(x => x.Permission).ToList();
-        roles.ToList().Skip(pageSize * page).Take(pageSize);
         
+        var result = await _rolesBusinessLogic.GetRolesPaginatedAndTotalCount(page, pageSize);
+
+
+
         
         // Return the roles variable
-        return Ok(roles);
+        return Ok(result);
     }
     
     

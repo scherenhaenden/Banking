@@ -2,7 +2,11 @@ using BankingDataAccess.Core.Configuration;
 using BankingDataAccess.Persistence.UnitiesOfWork;
 using InternalUsers.BusinessLogic.Core;
 using InternalUsers.DataAccess.Core;
+using InternalUsers.DataAccess.Core.Domain;
 using InternalUsers.DataAccess.Database.Domain;
+using InternalUsers.DataAccess.Database.Domain.Login;
+using InternalUsers.DataAccess.Database.Logic.Login;
+using InternalUsers.Services.Dependencies;
 using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -27,10 +31,11 @@ builder.Services.AddDbContextPool<DbContext, GenericContext>(options => options
     UseMySQL("Server=localhost; Port=13306;database=db;uid=root;pwd=password"));
 
 
-builder.Services.AddScoped<IUnitOfWorkV2, UnityOfWorkV2>();
-builder.Services.AddScoped<ILoginDataAccessDataBase, LoginDataAccessDataBase>();
-builder.Services.AddScoped<ILoginDataAccess, LoginDataAccess>();
-builder.Services.AddScoped<ILogicBusinessLogic, LogicBusinessLogic>();
+ServiceCollectionCollector serviceCollectionCollector = new ServiceCollectionCollector();
+
+serviceCollectionCollector.FillTheCollection(builder.Services);
+
+
 
 var app = builder.Build();
 

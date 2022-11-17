@@ -15,11 +15,18 @@ public interface IRepository<TEntity> where TEntity : Entity, IEntity
 
     IQueryable<TEntity> GetAll();
     TEntity Get(Guid id);
+    
+    Task<TEntity?> GetByIdAsync(Guid id, CancellationToken cancellationToken = default);
+    Task UpdateAsync(TEntity entity, CancellationToken cancellationToken = default);
     IQueryable<TEntity> Where(Expression<Func<TEntity, bool>> predicate);
     TEntity? SingleOrDefault(Expression<Func<TEntity, bool>> predicate);
-    void Add(TEntity entity);
+    TEntity Add(TEntity entity);
+    
+    Task<TEntity> AddAsync(TEntity entity, CancellationToken cancellationToken = default);
     void AddRange(IEnumerable<TEntity> entities);
     void Remove(TEntity entity);
+    
+    Task RemoveAsync(TEntity entity, CancellationToken cancellationToken = default);
     void RemoveRange(IEnumerable<TEntity> entities);
     
     IQueryable<TEntity> GetAllIncluding(params Expression<Func<TEntity, object>>[] includeProperties);
@@ -28,6 +35,6 @@ public interface IRepository<TEntity> where TEntity : Entity, IEntity
     
     IQueryable<TEntity> GetAllIncluding(params string[] includeProperties);
     
-    Task<IEnumerable<TEntity>> EntityWithEagerLoad(Expression<Func<TEntity, bool>> filter, string[] children);
+    Task<IEnumerable<TEntity>> EntityWithEagerLoad(Expression<Func<TEntity, bool>> filter, string[] children, CancellationToken cancellationToken = default);
 }
 

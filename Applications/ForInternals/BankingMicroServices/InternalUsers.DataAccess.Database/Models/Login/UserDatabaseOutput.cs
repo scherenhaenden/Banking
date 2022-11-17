@@ -1,9 +1,11 @@
+using InternalUsers.DataAccess.Database.Models.Shared;
+
 namespace InternalUsers.DataAccess.Database.Models.Login;
 
 public class UserDatabaseOutput
 {
     public List<DirectlyAssignTokensTokenDataBaseOutput> DirectlyAssignTokensTokens { get; set; }
-    public List<RoleDataBaseOutput> Roles { get; set; }
+    public List<RoleDataBaseOutputAndInput> Roles { get; set; }
     public string UserName { get; set; }
     public string Email { get; set; }
     public string FirstName { get; set; }
@@ -13,16 +15,6 @@ public class UserDatabaseOutput
     public Guid Id { get; set; }
     public DateTime CreatedDateTime { get; set; }
     public DateTime? ModifiedDateTime { get; set; }
-}
-
-public class RoleDataBaseOutput
-{
-    public List<TokenDataBaseOutput> tokens { get; set; }
-    public string roleName { get; set; }
-    public bool isActive { get; set; }
-    public string id { get; set; }
-    public DateTime createdDateTime { get; set; }
-    public DateTime? modifiedDateTime { get; set; }
 }
 
 public class TokenDataBaseOutput
