@@ -1,21 +1,16 @@
 using BankingDataAccess.Core.Configuration;
-using InternalUsers.Services.Dependencies;
+using BankingDataAccess.Persistence.UnitiesOfWork;
 using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
 
-
 // Add services to the container.
 
-builder.Services.AddControllers().AddNewtonsoftJson(options =>
-    options.SerializerSettings.ReferenceLoopHandling = Newtonsoft.Json.ReferenceLoopHandling.Ignore
-);;
+builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
-// get current directory
-var currentDirectory = Directory.GetCurrentDirectory();
 
 builder.Services.AddDbContextPool<DbContext, GenericContext>(options => options
     // replace with your connection string
@@ -23,12 +18,7 @@ builder.Services.AddDbContextPool<DbContext, GenericContext>(options => options
     //UseSqlite("Data Source=/Users/edwardflores/Projects/Development/micro-service-learning/Example/Bank/Data/BankingSeeding.db"));
     UseMySQL("Server=localhost; Port=13306;database=db;uid=root;pwd=password"));
 
-
-ServiceCollectionCollector serviceCollectionCollector = new ServiceCollectionCollector();
-
-serviceCollectionCollector.FillTheCollection(builder.Services);
-
-
+builder.Services.AddScoped<IUnitOfWorkV2, UnityOfWorkV2>();
 
 var app = builder.Build();
 
@@ -45,4 +35,4 @@ app.UseAuthorization();
 
 app.MapControllers();
 
-app.Run("http://localhost:60001");
+app.Run();

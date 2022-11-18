@@ -2,15 +2,25 @@ using BankingDataAccess.Core.Configuration;
 using BankingDataAccess.Persistence.UnitiesOfWork;
 using BankingSeeding.DataAccess;
 using BankingSeeding.DataSeeding;
+using BankingSeeding.Services.Settings;
 
 namespace BankingSeeding;
 
 public class Runner
 {
+    private readonly AppSettings _appSettings;
+
+    public Runner(AppSettings appSettings)
+    {
+        _appSettings = appSettings;
+    }
+    
+    
+    
     public void Run()
     {
         // Get DB initiator
-        var dbInitiator = new DbInitiator();
+        var dbInitiator = new DbInitiator(_appSettings);
 
         var context = dbInitiator.GetContextMySql();
         

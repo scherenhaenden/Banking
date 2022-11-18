@@ -41,7 +41,7 @@ builder.Services.AddSwaggerGen(c =>
         } 
     });
 });
-var appSettings = builder.Configuration.GetSection("AppSettings");
+IConfigurationSection appSettings = builder.Configuration.GetSection("AppSettings");
 builder.Services.Configure<AppSettings>(appSettings);
 var realSettings = appSettings.Get<AppSettings>();
 /*builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme).AddJwtBearer(options =>

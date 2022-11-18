@@ -1,15 +1,69 @@
 using BankingDataAccess.Core.Configuration;
+using BankingSeeding.Services.Settings;
 using Microsoft.EntityFrameworkCore;
 
 namespace BankingSeeding.DataAccess;
 
 public class DbInitiator
 {
+    private readonly AppSettings _appSettings;
     /*public static void Initiate()
     {
         using var context = new BankingContext();
         context.Database.Migrate();
     }*/
+
+    public DbInitiator(AppSettings appSettings)
+    {
+        _appSettings = appSettings;
+    }
+    
+    // Create private method that Initialize database memory
+    private DbContext InitAndGet(string connectionString, IContextCreator<GenericContext> iContextCreator) 
+    {       
+        var value = iContextCreator.CreateContext(connectionString);
+        return value;
+    }
+    
+    public DbContext InitiateAndGet(string contextName, string type, string connectionString)
+    {
+        if (contextName.ToLower() == "GenericContext".ToLower())
+        {
+            if (type == "memory")
+            {
+                IContextCreator<GenericContext> contextCreator = new ContextCreatorInMemory<GenericContext>();
+            
+                return InitAndGet(connectionString, contextCreator);
+            }
+            
+            if (type == "mysql")
+            {
+                IContextCreator<GenericContext> contextCreator = new ContextCreatorMySql<GenericContext>();
+            
+                return InitAndGet(connectionString, contextCreator);
+            }
+            
+            if( type == "sqlserver")
+            {
+                IContextCreator<GenericContext> contextCreator = new ContextCreatorSqlServer<GenericContext>();
+            
+                return InitAndGet(connectionString, contextCreator);
+            }
+            
+            if( type == "mysql")
+            {
+                IContextCreator<GenericContext> contextCreator = new ContextCreatorMySql<GenericContext>();
+            
+                return InitAndGet(connectionString, contextCreator);
+            }
+            
+        }
+
+        return null;
+
+    }
+    
+    
     
     public GenericContext GetInMemoryContext()
     {
@@ -27,14 +81,42 @@ public class DbInitiator
     }
 }
 
+public class ContextCreatorSqlServer<T> : IContextCreator<GenericContext>
+{
+    public GenericContext CreateContext(string connectionString)
+    {
+        /*var optionsBuilder = new DbContextOptionsBuilder<GenericContext>();
+        optionsBuilder.UseSqlServer(connectionString);
+        return new GenericContext(optionsBuilder.Options);*/
+        throw new NotImplementedException();
+    }
+
+    public void DisposeContext(GenericContext context)
+    {
+        throw new NotImplementedException();
+    }
+}
+
+public class ContextCreatorSqlite<T>: IContextCreator<T>where T: DbContext
+{   
+    public T CreateContext(string connectionString)
+    {
+        var optionsBuilder = new DbContextOptionsBuilder<T>();
+        optionsBuilder.UseLazyLoadingProxies().UseSqlite(connectionString);
+        return (T)Activator.CreateInstance(typeof(T), optionsBuilder.Options);
+    }
+   
+    public void DisposeContext(T context)
+    {
+        
+        //context.Database.EnsureDeleted();
+        context.Dispose();
+    }
+}
+
 public class ContextGenerator
 {
-    /*public static BankingSeedingContext GetContext()
-    {
-        var optionsBuilder = new DbContextOptionsBuilder<BankingSeedingContext>();
-        optionsBuilder.UseSqlServer("Server=.;Database=BankingSeeding;Trusted_Connection=True;MultipleActiveResultSets=true");
-        return new BankingSeedingContext(optionsBuilder.Options);
-    }*/
+
     
     // Add method to get generate memory database
     public GenericContext GetContextInMemory()
